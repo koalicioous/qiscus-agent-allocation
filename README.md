@@ -9,7 +9,7 @@
 6. The scheduled job will check is there any vacant agent? if so, is there any waiting customer? if so, then assign available agents to unserved room.
 
 ## Service links:
-[Available Agent Checker](https://pipedream.com/@suryanegara/available-agent-checker-p_wOCkKdp)
-[Custom Agent Allocation](https://pipedream.com/@suryanegara/custom-agent-allocation-p_8rCLYLn)
+- [Available Agent Checker](https://pipedream.com/@suryanegara/available-agent-checker-p_wOCkKdp)
+- [Custom Agent Allocation](https://pipedream.com/@suryanegara/custom-agent-allocation-p_8rCLYLn)
 
 :)
