@@ -8,4 +8,8 @@
 5. Since there's no configuration to setup webhook to recieve event each time a room is resolved, I scheduled another simple service to check is there any vacant agent every minute. This condition will limit customers' waiting time to maximum 1 minute every time new vacant agent is available.
 6. The scheduled job will check is there any vacant agent? if so, is there any waiting customer? if so, then assign available agents to unserved room.
 
+## Service links:
+[Available Agent Checker](https://pipedream.com/@suryanegara/available-agent-checker-p_wOCkKdp)
+[Custom Agent Allocation](https://pipedream.com/@suryanegara/custom-agent-allocation-p_8rCLYLn)
+
 :)
