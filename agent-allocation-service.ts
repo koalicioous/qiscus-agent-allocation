@@ -41,5 +41,19 @@ const ASSIGN_AGENT = async (agentId, roomId) => {
   console.log(assign_agent);
 }
 
+const ADD_TO_WAITING_LIST = async (roomId) => {
+    const isWaiting = await supabase
+      .from('queues')
+      .select('*')
+      .match({room_id: roomId}).length === 1;
+    if (!isWaiting) {
+      const {data: addToWaitingList} = await supabase
+        .from('queues')
+        .insert([{
+          room_id: roomId
+        }])
+    }
+  }
+
 const res = await GET_AVAILABLE_AGENTS();
 return res;
