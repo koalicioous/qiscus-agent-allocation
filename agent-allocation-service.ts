@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createClient } from '@supabase/supabase-js'
+import querystring from 'querystring'
 
 const supabaseUrl = 'https://ecsxaprxkvyoolvvobsn.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
@@ -19,10 +20,25 @@ const GET_AVAILABLE_AGENTS = async () => {
       return response.data.data.agents.data;
   })
   available_agents = available_agents.filter(agent => agent.is_available && agent.current_customer_count < 2 )
+  if (available_agents.length > 0) {
+    await ASSIGN_AGENT(available_agents[0].id, steps.trigger.event.body.room_id)
+  }
 }
 
-const ASSIGN_AGENT = async () => {
-
+const ASSIGN_AGENT = async (agentId, roomId) => {
+  let assign_agent = await axios.post('https://multichannel.qiscus.com/api/v1/admin/service/assign_agent',
+  querystring.stringify({
+      agent_id: agentId,
+      room_id: roomId,
+  }),{
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Qiscus-App-Id': process.env.QISCUS_APP_ID,
+          'Qiscus-Secret-Key': process.env.QISCUS_SECRET_KEY,
+      }
+  })
+  .then(response => response);
+  console.log(assign_agent);
 }
 
 const res = await GET_AVAILABLE_AGENTS();
